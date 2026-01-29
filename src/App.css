@@ -7,6 +7,11 @@
     pointer-events: none;
 }
 
+ul {
+    text-align: left;
+    margin-left: 200px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
         animation: App-logo-spin infinite 20s linear;
@@ -15,7 +20,7 @@
 
 .App-header {
     width: 100%;
-    background-color: #282c34;
+    background-color: red;
     min-height: 40vh;
     display: flex;
     flex-direction: column;
