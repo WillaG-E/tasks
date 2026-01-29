@@ -15,7 +15,7 @@ function App(): React.JSX.Element {
             </p>
             <p>Hello World</p>
             <img
-                src="../public/Poppies.jpg"
+                src="src/Poppies.jpg"
                 alt="A picture of a field of red poppies"
             />
             <p>Willa Galipeau-Eldridge</p>
