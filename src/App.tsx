@@ -14,13 +14,22 @@ function App(): React.JSX.Element {
             </header>
             <h1>This is heading text.</h1>
             <hr></hr>
-            <Counter></Counter>
+            <p>
+                Counter 1: <Counter></Counter>
+            </p>
+            <p>
+                Counter 2: <Counter></Counter>
+            </p>
+            <p>
+                Counter 3: <Counter></Counter>
+            </p>
             <hr />
             <RevealAnswer></RevealAnswer>
             <hr />
             <TwoDice></TwoDice>
             <hr />
             <ChangeType></ChangeType>
+            <hr></hr>
             <p>Hello World</p>
             <img
                 src="src/Poppies.jpg"
