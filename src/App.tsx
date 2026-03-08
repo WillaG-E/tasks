@@ -1,6 +1,10 @@
 import React from "react";
 import "./App.css";
 import { Button, Container, Row, Col } from "react-bootstrap";
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { TwoDice } from "./components/TwoDice";
+import { Counter } from "./components/Counter";
 
 function App(): React.JSX.Element {
     return (
@@ -9,10 +13,23 @@ function App(): React.JSX.Element {
                 UM COS420 with React Hooks and TypeScript
             </header>
             <h1>This is heading text.</h1>
+            <hr></hr>
             <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
+                Counter 1: <Counter></Counter>
             </p>
+            <p>
+                Counter 2: <Counter></Counter>
+            </p>
+            <p>
+                Counter 3: <Counter></Counter>
+            </p>
+            <hr />
+            <RevealAnswer></RevealAnswer>
+            <hr />
+            <TwoDice></TwoDice>
+            <hr />
+            <ChangeType></ChangeType>
+            <hr></hr>
             <p>Hello World</p>
             <img
                 src="src/Poppies.jpg"
