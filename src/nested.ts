@@ -63,12 +63,14 @@ export function getNames(questions: Question[]): string[] {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return questions.map((question) => ({
-        questionId: question.id,
-        submitted: false,
-        correct: false,
-        text: "",
-    }));
+    return questions.map(
+        (question): Answer => ({
+            questionId: question.id,
+            submitted: false,
+            correct: false,
+            text: "",
+        }),
+    );
 }
 
 /***
@@ -80,6 +82,7 @@ export function publishAll(questions: Question[]): Question[] {
     return questions.map(
         (question: Question): Question => ({
             ...question,
+            options: [...question.options],
             published: true,
         }),
     );
