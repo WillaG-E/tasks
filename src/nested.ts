@@ -1,6 +1,7 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
 import { makeBlankQuestion } from "./objects";
+import { makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -35,7 +36,11 @@ export function findQuestion(
     id: number,
 ): Question | null {
     const find = questions.find((question) => question.id === id);
-    return find ?? null;
+    if (find === undefined) {
+        const find = questions.find((question) => question.id === id);
+        return find ?? null;
+    }
+    return find;
 }
 
 /**
@@ -107,6 +112,7 @@ export function addNewQuestion(
  * the Questions are the same EXCEPT for the one with the given `targetId`. That
  * Question should be the same EXCEPT that its name should now be `newName`.
  * Hint: as usual, do not modify the input questions array,
+ * Hint: as usual, do not modify the input questions array,
  *       to make a new copy of a question with some changes, use the ... operator
  */
 export function renameQuestionById(
@@ -130,6 +136,7 @@ export function renameQuestionById(
  *
  * Remember, if a function starts getting too complicated, think about how a helper function
  * can make it simpler! Break down complicated tasks into little pieces.
+ *
  *
  * Hint: you need to use the ... operator for both the question and the options array
  */
