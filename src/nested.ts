@@ -18,13 +18,12 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    const nonEmpty = questions.filter(
+    return questions.filter(
         (question: Question): boolean =>
             question.body !== "" ||
             question.expected !== "" ||
             question.options.length > 0,
     );
-    return nonEmpty;
 }
 
 /***
@@ -116,7 +115,9 @@ export function renameQuestionById(
     newName: string,
 ): Question[] {
     return questions.map((question) =>
-        question.id === targetId ? { ...question, name: newName } : question,
+        question.id === targetId ?
+            { ...question, name: newName, options: [...question.options] }
+        :   question,
     );
 }
 
@@ -142,9 +143,9 @@ export function editOption(
         if (question.id !== targetId) {
             return question;
         }
-        const newOptions = [...question.options];
+        let newOptions = [...question.options];
         if (targetOptionIndex === -1) {
-            newOptions.push(newOption);
+            newOptions = [...newOptions, newOption];
         } else {
             newOptions[targetOptionIndex] = newOption;
         }
