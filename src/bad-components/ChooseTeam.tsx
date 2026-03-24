@@ -11,6 +11,7 @@ const PEOPLE = [
 ];
 
 export function ChooseTeam(): React.JSX.Element {
+    const [allOptions] = useState<string[]>(PEOPLE);
     const [team, setTeam] = useState<string[]>([]);
 
     function chooseMember(newMember: string) {
@@ -44,9 +45,12 @@ export function ChooseTeam(): React.JSX.Element {
                 </Col>
                 <Col>
                     <strong>Team:</strong>
-                    {team.map((member: string) => (
-                        <li key={member}>{member}</li>
-                    ))}
+                    <ul>
+                        {team.map((member: string) => (
+                            <li key={member}>{member}</li>
+                        ))}
+                        ;
+                    </ul>
                     <Button onClick={clearTeam}>Clear Team</Button>
                 </Col>
             </Row>
