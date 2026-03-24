@@ -5,12 +5,6 @@ export const COLORS = ["red", "blue", "green"];
 const DEFAULT_COLOR_INDEX = 0;
 
 function ChangeColor({
-    nextColor,
-}: {
-    nextColor: () => void;
-}): React.JSX.Element {
-    return <Button onClick={nextColor}>Next Color</Button>;
-function ChangeColor({
     setIndex,
     index,
 }: {
@@ -28,7 +22,6 @@ function ChangeColor({
     );
 }
 
-function ColorPreview({ color }: { color: string }): React.JSX.Element {
 function ColorPreview({ index }: { index: number }): React.JSX.Element {
     return (
         <div
