@@ -1,12 +1,16 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
+import { makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    return [];
+    const publishedQuestions = questions.filter(
+        (questions: Question) => questions.published,
+    );
+    return publishedQuestions;
 }
 
 /**
@@ -15,7 +19,13 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+    const nonEmpty = questions.filter(
+        (questions: Question) =>
+            questions.body !== "" ||
+            questions.expected !== "" ||
+            questions.options.length > 0,
+    );
+    return nonEmpty;
 }
 
 /***
@@ -26,7 +36,11 @@ export function findQuestion(
     questions: Question[],
     id: number,
 ): Question | null {
-    return null;
+    const find = questions.find((question) => question.id === id);
+    if (find === undefined) {
+        return null;
+    }
+    return find;
 }
 
 /**
@@ -35,7 +49,8 @@ export function findQuestion(
  * Hint: use filter
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    const remove = questions.filter((question: Question) => question.id !== id);
+    return remove;
 }
 
 /***
@@ -44,7 +59,8 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * Do not modify the input array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    const names = questions.map((question) => question.name);
+    return names;
 }
 
 /**
@@ -53,7 +69,13 @@ export function getNames(questions: Question[]): string[] {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return [];
+    const Answer = questions.map((questions) => ({
+        questionId: questions.id,
+        submitted: false,
+        correct: false,
+        text: "",
+    }));
+    return Answer;
 }
 
 /***
@@ -62,7 +84,11 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * Hint: as usual, do not modify the input questions array
  */
 export function publishAll(questions: Question[]): Question[] {
-    return [];
+    const publish = questions.map((questions) => ({
+        ...questions,
+        published: true,
+    }));
+    return publish;
 }
 
 /***
@@ -77,7 +103,7 @@ export function addNewQuestion(
     name: string,
     type: QuestionType,
 ): Question[] {
-    return [];
+    return [...questions, makeBlankQuestion(id, name, type)];
 }
 
 /***
@@ -92,7 +118,10 @@ export function renameQuestionById(
     targetId: number,
     newName: string,
 ): Question[] {
-    return [];
+    const rename = questions.map((question) =>
+        question.id === targetId ? { ...question, name: newName } : question,
+    );
+    return rename;
 }
 
 /**
