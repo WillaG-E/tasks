@@ -1,4 +1,4 @@
-import { Question } from "./interfaces/question";
+import { Question, QuestionType } from "./interfaces/question";
 import {
     makeBlankQuestion,
     isCorrect,
@@ -255,6 +255,22 @@ What shape can you make with one line?
             points: 1,
             published: true,
         });
+    });
+
+    ///////////////////////////////////
+    //Fix red in run tests
+    test("isValid returns false for an unknown qustion type", () => {
+        const fakeQuestion: Question = {
+            type: "some_new_question_type" as QuestionType,
+            options: [],
+            id: 1,
+            name: "test",
+            body: "test",
+            expected: "test",
+            points: 1,
+            published: true,
+        };
+        expect(isValid(fakeQuestion, "some answer")).toBe(false);
     });
 
     ///////////////////////////////////

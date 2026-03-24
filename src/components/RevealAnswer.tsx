@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 export function RevealAnswer(): React.JSX.Element {
-    const [visible, setVisible] = useState<boolean>(true);
+    const [visible, setVisible] = useState<boolean>(false);
     const answer = 42;
 
     function revealAnswer(): void {
-        setVisible(visible);
+        setVisible(!visible);
     }
 
     return (

@@ -22,8 +22,10 @@ export function TwoDice(): React.JSX.Element {
         setRightDie(d6());
     };
 
-    const win = leftDie === rightDie;
-    const snakeEyes = win && leftDie === 1;
+    const match = leftDie === rightDie;
+    const snakeEyes = match && leftDie === 1;
+
+    const win = match && leftDie !== 1;
 
     return (
         <div>
